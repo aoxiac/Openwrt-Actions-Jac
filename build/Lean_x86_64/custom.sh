@@ -47,7 +47,7 @@ sed -i 's#interval: 5#interval: 1#g' feeds/luci/applications/luci-app-wrtbwmon/h
 cat >> $ZZZ <<-EOF
 # 设置旁路由模式
 uci set network.lan.gateway='192.168.9.1'                     # 旁路由设置 IPv4 网关
-uci set network.lan.dns='223.5.5.5 223.6.6.6'                # 旁路由设置 DNS(多个DNS要用空格分开)
+uci set network.lan.dns='223.5.5.5 114.114.114.114'                # 旁路由设置 DNS(多个DNS要用空格分开)
 # uci set network.lan.delegate='0'                             # 去掉LAN口使用内置的 IPv6 管理(若用IPV6请把'0'改'1')
 uci set dhcp.@dnsmasq[0].filter_aaaa='1'                     # 禁止解析 IPv6 DNS记录(若用IPV6请把'1'改'0')
 uci set dhcp.lan.ignore='1'                                  # 旁路由关闭DHCP功能
@@ -118,8 +118,8 @@ EOF
 
 # 设置固件大小:
 cat >> .config <<EOF
-CONFIG_TARGET_KERNEL_PARTSIZE=16
-CONFIG_TARGET_ROOTFS_PARTSIZE=580
+CONFIG_TARGET_KERNEL_PARTSIZE=32
+CONFIG_TARGET_ROOTFS_PARTSIZE=680
 EOF
 
 # 固件压缩:
