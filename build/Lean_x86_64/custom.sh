@@ -51,9 +51,9 @@ uci set network.lan.dns='223.5.5.5 114.114.114.114'                # 旁路由�
 # uci set network.lan.delegate='0'                             # 去掉LAN口使用内置的 IPv6 管理(若用IPV6请把'0'改'1')
 uci set dhcp.@dnsmasq[0].filter_aaaa='1'                     # 禁止解析 IPv6 DNS记录(若用IPV6请把'1'改'0')
 uci set dhcp.lan.ignore='1'                                  # 旁路由关闭DHCP功能
-# uci set dhcp.lan.dhcpv6=''                                 # 路由通告服务-禁用
-# uci set dhcp.lan.ra=''                                     # DHCPv6 服务-禁用
-# uci set dhcp.lan.ra_management=''                          # DHCPv6 模式-禁用
+uci set dhcp.lan.dhcpv6=''                                 # 路由通告服务-禁用
+uci set dhcp.lan.ra=''                                     # DHCPv6 服务-禁用
+uci set dhcp.lan.ra_management=''                          # DHCPv6 模式-禁用
 # uci delete network.lan.type                                # 旁路由桥接模式-禁用
 
 # 如果有用IPV6的话,可以使用以下命令创建IPV6客户端(LAN口)（去掉全部代码uci前面#号生效）
@@ -119,7 +119,7 @@ EOF
 # 设置固件大小:
 cat >> .config <<EOF
 CONFIG_TARGET_KERNEL_PARTSIZE=32
-CONFIG_TARGET_ROOTFS_PARTSIZE=680
+CONFIG_TARGET_ROOTFS_PARTSIZE=350
 EOF
 
 # 固件压缩:
